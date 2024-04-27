@@ -1,0 +1,123 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #ddd;
+  font-family: 'Montserrat';
+  overflow-x: hidden;
+}
+
+nav {
+  background-color: rgb(173, 90, 250);
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(229, 204, 253);
+}
+
+nav ul {
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+ul li a {
+  color: rgb(229, 204, 253);
+  text-decoration: none;
+}
+
+ul li a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* hamburger menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.menu-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+  top: -5px;
+  left: -1px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 28px;
+  height: 3px;
+  border-radius: 3px;
+  background-color: rgb(229, 204, 253);
+  transition: all 0.3s;
+}
+
+.menu-toggle span:nth-child(2) {
+  transform-origin: 0 0;
+}
+
+.menu-toggle span:last-child {
+  transform-origin: 0 2px;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2) {
+  background-color: white;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.menu-toggle input:checked ~ span:last-child {
+  background-color: white;
+  transform: rotate(-45deg) translate(-1px, 0);
+}
+
+.menu-toggle input:checked ~ span:nth-child(3) {
+  transform: scale(0);
+  opacity: 0;
+}
+
+/* responsive */
+/* tablet */
+@media screen and (max-width: 768px) {
+  nav ul {
+    width: 50%;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 576px) {
+  nav ul {
+    position: absolute;
+    right: 0;
+    top: 0;
+    flex-direction: column;
+    background-color: rgb(173, 90, 250);
+    width: 80%;
+    height: 100vh;
+    transform: translateX(100%);
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: -1;
+    transition: 1s;
+    opacity: 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav ul.slide {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
